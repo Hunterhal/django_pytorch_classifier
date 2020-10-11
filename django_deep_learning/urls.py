@@ -18,7 +18,7 @@ from django.urls import path
 from classifier import views
 
 urlpatterns = [
-    path('index/', views.index_test_view),
+    path('', views.home_view),
     path('home/', views.home_view),
     path('admin/', admin.site.urls),
 ]

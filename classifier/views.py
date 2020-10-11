@@ -6,7 +6,4 @@ def home_view(request, *args, **kwargs):
     context = {"class": "Dog"}
     return render(request, "home.html", context)
 
-def index_test_view(request, *args, **kwargs):
-    context = {"class": "Dog"}
-    return render(request, "index.html", context)
     
