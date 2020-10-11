@@ -1,10 +1,17 @@
 from django.shortcuts import render
+from django.core.files import File
+from django.core.files.temp import NamedTemporaryFile
 from .forms import ImageForm
 from PIL import Image
 import torch
 import torchvision
 from torchvision import transforms
 import class_names
+import base64
+
+
+
+
 
 # Create your views here
 def home_view(request, *args, **kwargs):
@@ -21,33 +28,28 @@ def home_view(request, *args, **kwargs):
         ])
 
         if form.is_valid():
-            form.save()
+            #form.save()
             # Get the current instance object to display in the template
+            
             img_obj = form.instance
 
-            print(type(img_obj.image))
+            image = form.cleaned_data['image']
+            
+            b64_img = base64.b64encode(image.file.read()).decode('utf-8')
+
             img = Image.open(img_obj.image)
-            print(type(img))
 
             img_tensor = transform_img(img)
 
-            print(img_tensor.shape)  
-
             img_tensor = img_tensor.unsqueeze(0)
-
-            print(img_tensor.shape)  
 
             img_class = torch.argmax( squeezenet(img_tensor) )
 
-            print(img_class)
-
             img_class_name = class_names.class_name_dict[int(img_class)]
-
-            print(img_class_name)
 
             img_obj.image_class = img_class_name
 
-            return render(request, 'home.html', {'form': form, 'img_obj': img_obj})
+            return render(request, 'home.html', {'form': form, "img_obj": img_obj, "image": b64_img, "img_class": img_class_name})
     else:
         form = ImageForm()
     return render(request, 'home.html', {'form': form})

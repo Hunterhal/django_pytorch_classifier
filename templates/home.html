@@ -39,8 +39,8 @@
     </form>
     
     {% if img_obj %}
-        <img src="{{ img_obj.image.url }}"  alt="connect" style="max-height:300px">
-        <h3><p style="display:inline">Image class is </p> <p class="font-weight-bold" style="display:inline" >{{img_obj.image_class}}</p> </h3>
+        <img src="data:image/png;base64,{{image}}" alt="connect" style="max-height:300px">
+        <h3><p style="display:inline">Image class is </p> <p class="font-weight-bold" style="display:inline" >{{img_class}}</p> </h3>
     {% endif %}
 
   </main>

@@ -20,3 +20,7 @@ For this project it is stored in another file, just write your SECRET_KEY there 
 5) Run and open the server
 python manage.py runserver 
 
+
+TODO:  
+Clear saved images inside the media folder, work with temporary files
+
