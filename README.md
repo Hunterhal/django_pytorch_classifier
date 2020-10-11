@@ -23,4 +23,7 @@ python manage.py runserver
 
 TODO:  
 Image resizing is needede for the home page
+Organize readme file
+Add CUDA support
+Enable threading or workers for paralelization
 
