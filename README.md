@@ -22,5 +22,5 @@ python manage.py runserver
 
 
 TODO:  
-Clear saved images inside the media folder, work with temporary files
+Image resizing is needede for the home page
 

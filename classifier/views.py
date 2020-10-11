@@ -1,6 +1,4 @@
 from django.shortcuts import render
-from django.core.files import File
-from django.core.files.temp import NamedTemporaryFile
 from .forms import ImageForm
 from PIL import Image
 import torch
@@ -8,10 +6,6 @@ import torchvision
 from torchvision import transforms
 import class_names
 import base64
-
-
-
-
 
 # Create your views here
 def home_view(request, *args, **kwargs):
